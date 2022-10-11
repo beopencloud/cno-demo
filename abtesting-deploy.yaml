@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: demoabtesting
+  name: demoabtesting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoabtesting
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demoabtesting
+    spec:
+      containers:
+      - image: beopenit/testabtesting:latest
+        name: testabtesting
+        resources: {}
+        securityContext:
+          privileged: true
+status: {}

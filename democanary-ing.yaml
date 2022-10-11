@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: democanary
+spec:
+  rules:
+  - host: "testcanary.app.demo-orange.gocno.io"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: democanary
+            port:
+              number: 80

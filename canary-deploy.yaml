@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: democanary
+  name: democanary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: democanary
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: democanary
+    spec:
+      containers:
+      - image: beopenit/testcanary:red
+        name: testcanary
+        resources: {}
+        securityContext:
+          privileged: true
+status: {}
