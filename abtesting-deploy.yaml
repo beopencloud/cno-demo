@@ -18,7 +18,7 @@ spec:
         app: demoabtesting
     spec:
       containers:
-      - image: beopenit/testabtesting:latest
+      - image: beopenit/version-printer:v1.0.0
         name: testabtesting
         resources: {}
         securityContext:
