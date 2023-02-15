@@ -19,6 +19,7 @@ spec:
     spec:
       containers:
       - image: beopenit/democd:red
+        imagePullPolicy: Always
         name: democd1
         resources:
           limits:
@@ -27,6 +28,7 @@ spec:
           requests:
             cpu: "13m"
             memory: "13Mi"
+      
 
 ---
 
@@ -53,7 +55,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "<your-name>-democd1.apps.dev.gocno.io"
+  - host: "gocno-democd1.apps.dev.gocno.io"
     http:
       paths:
       - pathType: Prefix
