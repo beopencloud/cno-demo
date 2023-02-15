@@ -54,7 +54,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "gocno-democd1.apps.prod.gocno.io"
+  - host: "<your-name>-democd1.apps.prod.gocno.io"
     http:
       paths:
       - pathType: Prefix
