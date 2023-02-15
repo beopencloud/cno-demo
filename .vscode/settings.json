@@ -1,0 +1,9 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json": "*.yaml",
+        "kubernetes://schema/networking.k8s.io/v1%40ingress": [
+            "file:///home/ali/Documents/cno/cno-demo/prod-workloads.yaml",
+            "file:///home/ali/Documents/cno/cno-demo/dev-workloads.yaml"
+        ]
+    }
+}
