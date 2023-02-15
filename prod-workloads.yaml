@@ -1,0 +1,199 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: democd1
+    instance: gocno
+  name: democd1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: democd1 
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: democd1
+        instance: gocno
+    spec:
+      containers:
+      - image: beopenit/democd:red
+        name: democd1
+        resources:
+          limits:
+            cpu: "40m"
+            memory: "40Mi"
+          requests:
+            cpu: "13m"
+            memory: "13Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: democd1
+  name: democd1
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: democd1
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: democd1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "gocno-democd1.apps.prod.gocno.io"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/"
+        backend:
+          service:
+            name: democd1
+            port:
+              number: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: democd2
+    instance: gocno
+  name: democd2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: democd2
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: democd2
+        instance: gocno
+    spec:
+      containers:
+      - image: beopenit/democd:red
+        name: democd2
+        resources:
+          limits:
+            cpu: "40m"
+            memory: "40Mi"
+          requests:
+            cpu: "13m"
+            memory: "13Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: democd2
+  name: democd2
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: democd2
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: democd2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "gocno-democd2.apps.prod.gocno.io"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/"
+        backend:
+          service:
+            name: democd2
+            port:
+              number: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: democd3
+  name: democd3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: democd3 
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: democd3
+    spec:
+      containers:
+      - image: beopenit/democd:red
+        name: democd3
+        resources:
+          limits:
+            cpu: "40m"
+            memory: "40Mi"
+          requests:
+            cpu: "13m"
+            memory: "13Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: democd3
+  name: democd3
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: democd3
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: democd3
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "gocno-democd3.apps.prod.gocno.io"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/"
+        backend:
+          service:
+            name: democd3
+            port:
+              number: 80
