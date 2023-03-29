@@ -3,14 +3,10 @@ items:
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
-    creationTimestamp: "2023-03-13T16:31:41Z"
-    generation: 6
     labels:
       cno-version: main
     name: democd
     namespace: demo-dev
-    resourceVersion: "210284"
-    uid: cfb54804-a5a2-4e6c-b683-f89100b3ed63
   spec:
     replicas: 1
     revisionHistoryLimit: 10
@@ -57,14 +53,8 @@ items:
 - apiVersion: image.openshift.io/v1
   kind: ImageStream
   metadata:
-    annotations:
-      openshift.io/image.dockerRepositoryCheck: "2023-03-13T16:36:07Z"
-    creationTimestamp: "2023-03-13T16:29:44Z"
-    generation: 5
     name: democd
     namespace: demo-dev
-    resourceVersion: "204335"
-    uid: 658d6687-ed33-486d-ba09-c666a7e736d2
   spec:
     lookupPolicy:
       local: false
@@ -92,15 +82,9 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    creationTimestamp: "2023-03-13T16:52:25Z"
     name: democd
     namespace: demo-dev
-    resourceVersion: "213265"
-    uid: 28fda5e9-73ae-4941-af56-dfb1b47f28c5
   spec:
-    clusterIP: 172.30.107.100
-    clusterIPs:
-    - 172.30.107.100
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
@@ -116,15 +100,12 @@ items:
 - apiVersion: route.openshift.io/v1
   kind: Route
   metadata:
-    creationTimestamp: "2023-03-13T16:53:53Z"
     name: democd
     namespace: demo-dev
-    resourceVersion: "214045"
-    uid: 3edcf7a0-1280-4c84-bd38-31221728caed
   spec:
-    host: democd.testmigration.gocno.io
+    host: democd.rosa.cno.app
     port:
-      targetPort: 8080
+      targetPort: 80
     to:
       kind: Service
       name: democd
